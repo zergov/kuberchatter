@@ -21,6 +21,7 @@ ul {
 }
 
 .chatbox {
+  height: 100%;
   overflow: scroll;
 }
 
