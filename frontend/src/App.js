@@ -19,6 +19,10 @@ class App extends Component {
 
     fetch('http://localhost:5000/send', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: JSON.stringify({
         message: this.state.message
       }),
