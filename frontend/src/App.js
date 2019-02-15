@@ -14,6 +14,17 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    this.socket = new WebSocket('ws://localhost:8080');
+    this.socket.addEventListener('message', event => {
+      this.setState({ messages: this.state.messages.concat(event.data) })
+    });
+  }
+
+  componentWillUnmount() {
+    this.socket.close()
+  }
+
   sendMessage(e) {
     e.preventDefault()
 
@@ -23,15 +34,10 @@ class App extends Component {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({
-        message: this.state.message
-      }),
-    }).then(console.log)
-
-    this.setState({
-      message: '',
-      messages: this.state.messages.concat(this.state.message)
+      body: JSON.stringify({ message: this.state.message })
     })
+
+    this.setState({ message: '' })
 
     this.lastMessageDom.scrollIntoView();
   }

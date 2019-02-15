@@ -7,14 +7,22 @@
   const message_channel = await amqp_connection.createChannel()
   await message_channel.assertQueue(message_queue)
 
-  const wss = new websocket.Server({ port: 8080 })
+  const port = 8080
+  const wss = new websocket.Server({ port })
+  console.log(`chat-service started on port: ${port}`)
 
   wss.on('connection', ws => {
     console.log('new user connected.')
   })
 
+  function broadcast_message(message) {
+    wss.clients.forEach(client => {
+      if (client.readyState === websocket.OPEN) client.send(message)
+    });
+  }
+
   message_channel.consume(message_queue, msg => {
     const message = msg.content.toString()
-    console.log(`sending ${message} to all connected users.`)
+    broadcast_message(message)
   }, {noAck: true})
 })()
