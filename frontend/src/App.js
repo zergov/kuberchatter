@@ -67,6 +67,7 @@ class App extends Component {
           <ul className="user-list">
             <li>max goyette</li>
             <li>zergov</li>
+            <li>smoll</li>
           </ul>
         </div>
       </div>
