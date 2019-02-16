@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-lb
+  name: kuberchatter-web-lb
 spec:
   type: LoadBalancer
   ports:
@@ -9,4 +9,4 @@ spec:
       protocol: TCP
       targetPort: 80
   selector:
-    app: web
+    app: kuberchatter-web

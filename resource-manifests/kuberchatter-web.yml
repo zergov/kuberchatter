@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: kuberchatter-web
   labels:
-    app: web
+    app: kuberchatter-web
 spec:
   containers:
     - image: zergov/kuberchatter-web:0.0.1
