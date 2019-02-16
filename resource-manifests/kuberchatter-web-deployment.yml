@@ -16,7 +16,7 @@ spec:
         app: kuberchatter-web
     spec:
       containers:
-        - image: zergov/kuberchatter-web:0.0.1
+        - image: zergov/kuberchatter-web:0.0.2
           imagePullPolicy: Always
           name: kuberchatter-web
           ports:
