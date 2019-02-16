@@ -65,9 +65,9 @@ class App extends Component {
         </div>
         <div className="sidebar">
           <ul className="user-list">
-            <li>max goyette</li>
-            <li>zergov</li>
-            <li>smoll</li>
+            <li><span class="dot"></span>max goyette</li>
+            <li><span class="dot"></span>zergov</li>
+            <li><span class="dot"></span>smoll</li>
           </ul>
         </div>
       </div>

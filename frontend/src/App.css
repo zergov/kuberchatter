@@ -32,7 +32,16 @@ ul {
 
 .sidebar {
   grid-area: sidebar;
-  text-align: right;
+  text-align: left;
   width: 20vw;
   border-left: 1px solid black;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin-right: 4px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
 }
