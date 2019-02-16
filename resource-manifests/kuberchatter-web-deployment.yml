@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kuberchatter-web
+spec:
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: kuberchatter-web
+    spec:
+      containers:
+        - image: zergov/kuberchatter-web:0.0.1
+          imagePullPolicy: Always
+          name: kuberchatter-web
+          ports:
+            - containerPort: 80
