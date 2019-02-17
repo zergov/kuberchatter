@@ -5,7 +5,7 @@ metadata:
   labels:
     app: kuberchatter-api
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port: 5000
   selector:
@@ -18,7 +18,7 @@ metadata:
   labels:
     app: kuberchatter-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: kuberchatter-api
@@ -30,6 +30,9 @@ spec:
       containers:
       - name: kuberchatter-api
         imagePullPolicy: Always
-        image: zergov/kuberchatter-api:1c3b922
+        image: zergov/kuberchatter-api:8e6786c
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            cpu: 40m
