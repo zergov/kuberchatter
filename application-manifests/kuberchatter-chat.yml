@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuberchatter-chat-svc
+  labels:
+    app: kuberchatter-chat
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+  selector:
+    app: kuberchatter-chat
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuberchatter-chat-deployment
+  labels:
+    app: kuberchatter-chat
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kuberchatter-chat
+  template:
+    metadata:
+      labels:
+        app: kuberchatter-chat
+    spec:
+      containers:
+      - name: kuberchatter-chat
+        imagePullPolicy: Always
+        image: zergov/kuberchatter-chat:latest
+        ports:
+        - containerPort: 8080
+
