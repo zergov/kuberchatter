@@ -24,7 +24,6 @@
     message: 'Hello world!',
     envs: process.env,
     rabbit: {
-      connection: amqp_connection,
       channel: message_channel,
     }
   }))
