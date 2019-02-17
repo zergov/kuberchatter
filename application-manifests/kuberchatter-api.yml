@@ -30,6 +30,6 @@ spec:
       containers:
       - name: kuberchatter-api
         imagePullPolicy: Always
-        image: zergov/kuberchatter-api:34a3490
+        image: zergov/kuberchatter-api:1c3b922
         ports:
         - containerPort: 5000
