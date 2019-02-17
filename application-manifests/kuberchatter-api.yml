@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuberchatter-api-svc
+  labels:
+    app: kuberchatter-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: kuberchatter-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuberchatter-api-deployment
+  labels:
+    app: kuberchatter-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kuberchatter-api
+  template:
+    metadata:
+      labels:
+        app: kuberchatter-api
+    spec:
+      containers:
+      - name: kuberchatter-api
+        image: zergov/kuberchatter-api:latest
+        ports:
+        - containerPort: 5000
+
