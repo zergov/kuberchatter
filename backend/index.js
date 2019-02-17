@@ -19,7 +19,7 @@
   })
 
   // routes
-  app.get('/', (req, res) => res.json({message: 'Hello world!'}))
+  app.get('/', (req, res) => res.json({message: 'Hello world!', envs: process.env}))
   // app.post('/send', async (req, res) => {
     // const {message} = req.body
     // message_channel.sendToQueue(message_queue, Buffer.from(message))
