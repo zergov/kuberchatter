@@ -24,7 +24,7 @@
     message: 'Hello world!',
     envs: process.env,
     rabbit: {
-      channel: message_channel,
+      connection_host: amqp_connection.connection.stream._host,
     }
   }))
   // app.post('/send', async (req, res) => {
