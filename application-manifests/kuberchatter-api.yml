@@ -5,7 +5,7 @@ metadata:
   labels:
     app: kuberchatter-api
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port: 5000
   selector:
