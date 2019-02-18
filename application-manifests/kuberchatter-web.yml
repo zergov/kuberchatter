@@ -18,7 +18,7 @@ metadata:
   labels:
     app: kuberchatter-web
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: kuberchatter-web
@@ -32,3 +32,6 @@ spec:
         image: zergov/kuberchatter-web:latest
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            cpu: 10m
