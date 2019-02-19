@@ -3,7 +3,8 @@
   const amqp = require('amqplib');
 
   const message_queue = 'kuberchatter_messages'
-  const amqp_connection = await amqp.connect('amqp://localhost')
+  const message_queue_host = process.env.RABBITMQ_SERVICE_HOST || 'localhost'
+  const amqp_connection = await amqp.connect(`amqp://${message_queue_host}`)
   const message_channel = await amqp_connection.createChannel()
   await message_channel.assertQueue(message_queue)
 

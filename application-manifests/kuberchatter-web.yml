@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuberchatter-web-svc
+  labels:
+    app: kuberchatter-web
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+  selector:
+    app: kuberchatter-web
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuberchatter-web-deployment
+  labels:
+    app: kuberchatter-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuberchatter-web
+  template:
+    metadata:
+      labels:
+        app: kuberchatter-web
+    spec:
+      containers:
+      - name: kuberchatter-web
+        image: zergov/kuberchatter-web:6f19588
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 10m

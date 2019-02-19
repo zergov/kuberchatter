@@ -1,9 +1,21 @@
-all:
-	docker run -p 80:80 -d kuberchatter-web
-	docker run -p 5000:5000 -d kuberchatter-api
-	docker run -p 8080:8080 -d kuberchatter-chat
+TAG 	:= $$(git log -1 --pretty=%h)
+WEB_NAME := zergov/kuberchatter-web
+API_NAME := zergov/kuberchatter-api
+CHAT_NAME := zergov/kuberchatter-chat
 
 build:
-	docker build -t kuberchatter-web ./frontend
-	docker build -t kuberchatter-api ./backend
-	docker build -t kuberchatter-chat ./chat-service
+	build-web
+	build-api
+	build-chat
+
+build-web:
+	docker build -t ${WEB_NAME}:${TAG} ./frontend
+	docker tag ${WEB_NAME}:${TAG} ${WEB_NAME}:latest
+
+build-api:
+	docker build -t ${API_NAME}:${TAG} ./backend
+	docker tag ${API_NAME}:${TAG} ${API_NAME}:latest
+
+build-chat:
+	docker build -t ${CHAT_NAME}:${TAG} ./chat-service
+	docker tag ${CHAT_NAME}:${TAG} ${CHAT_NAME}:latest

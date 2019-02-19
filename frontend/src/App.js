@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.socket = new WebSocket('ws://localhost:8080');
+    this.socket = new WebSocket(`wss://${window.location.host}/chat`);
     this.socket.addEventListener('message', event => {
       this.setState({ messages: this.state.messages.concat(event.data) })
     });
@@ -28,7 +28,7 @@ class App extends Component {
   sendMessage(e) {
     e.preventDefault()
 
-    fetch('http://localhost:5000/send', {
+    fetch(`/api/send`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
