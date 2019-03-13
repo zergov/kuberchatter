@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: kuberchatter-web
-        image: zergov/kuberchatter-web:6f19588
+        image: zergov/kuberchatter-web:ecbe0a8
         ports:
         - containerPort: 80
         resources:
