@@ -11,14 +11,12 @@ Application is running on Google K8s engine at: https://35.188.32.24/
 - Install Minikube.
 - Install Helm.
 - Install `nginx-ingress`
-  `$ helm install stable/nginx-ingress`
+  ```
+  $ helm install stable/nginx-ingress
+  ```
 - start everything:
   ```
-  $ kubectl apply -f application-manifests/kuberchatter-api.yml
-  $ kubectl apply -f application-manifests/kuberchatter-chat.yml
-  $ kubectl apply -f application-manifests/kuberchatter-web.yml
-  $ kubectl apply -f application-manifests/loadbalancer-ingress.yml
-  $ kubectl apply -f application-manifests/rabbitmq.yml
+  $ make deploy
   ```
 - Launch the app
   ```
