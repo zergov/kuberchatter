@@ -22,9 +22,4 @@ build-chat:
 
 .PHONY: deploy
 deploy:
-	kubectl apply -f application-manifests/kuberchatter-api.yml
-	kubectl apply -f application-manifests/kuberchatter-chat.yml
-	kubectl apply -f application-manifests/kuberchatter-web.yml
-	kubectl apply -f application-manifests/loadbalancer-ingress.yml
-	kubectl apply -f application-manifests/rabbitmq.yml
-
+	kubectl apply -f application-manifests/
